@@ -1,0 +1,75 @@
+# depslib dependency file v1.0
+1605223641 source:c:\users\wande\desktop\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\lista.c
+	<stdio.h>
+	<stdlib.h>
+	"Lista.h"
+
+1604365967 c:\users\wande\desktop\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\pilha_e_lista.h
+
+1604854940 source:c:\users\wande\desktop\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\pilha.c
+	<stdio.h>
+	<stdlib.h>
+	"Pilha.h"
+
+1605227990 source:c:\users\wande\desktop\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\main.c
+	<stdio.h>
+	<stdlib.h>
+	<Windows.h>
+	<time.h>
+	<locale.h>
+	"Pilha.h"
+	"Lista.h"
+	"funcoes.h"
+
+1605145805 c:\users\wande\desktop\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\lista.h
+
+1605223641 c:\users\wande\desktop\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\pilha.h
+
+1605540655 source:c:\users\wande\desktop\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\funcoes.c
+	<stdio.h>
+	<stdlib.h>
+	<Windows.h>
+	<locale.h>
+	<time.h>
+	"Pilha.h"
+	"Lista.h"
+	"funcoes.h"
+
+1605221033 c:\users\wande\desktop\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\funcoes.h
+
+1605540655 source:d:\todos os arquivos\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\funcoes.c
+	<stdio.h>
+	<stdlib.h>
+	<Windows.h>
+	<locale.h>
+	<time.h>
+	"Pilha.h"
+	"Lista.h"
+	"funcoes.h"
+
+1605223641 d:\todos os arquivos\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\pilha.h
+
+1605145805 d:\todos os arquivos\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\lista.h
+
+1605221033 d:\todos os arquivos\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\funcoes.h
+
+1605223641 source:d:\todos os arquivos\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\lista.c
+	<stdio.h>
+	<stdlib.h>
+	"Lista.h"
+
+1605227990 source:d:\todos os arquivos\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\main.c
+	<stdio.h>
+	<stdlib.h>
+	<Windows.h>
+	<time.h>
+	<locale.h>
+	"Pilha.h"
+	"Lista.h"
+	"funcoes.h"
+
+1604854940 source:d:\todos os arquivos\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\pilha.c
+	<stdio.h>
+	<stdlib.h>
+	"Pilha.h"
+
