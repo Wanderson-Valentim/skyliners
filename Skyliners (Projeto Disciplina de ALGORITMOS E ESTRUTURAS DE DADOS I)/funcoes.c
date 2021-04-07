@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <Windows.h>
+#include <string.h>
 #include <locale.h>
 #include <time.h>
 #include "Pilha.h"
@@ -10,18 +11,29 @@
 //VALOR PEÇAS: PARQUE - 0, TETO - 1, ANDAR - 2.
 
 
-Pilha*** criar_tabuleiro(int tam){
+Pilha*** criar_tabuleiro(int tam_tabuleiro){
     Pilha ***tabuleiro;
-    tabuleiro = (Pilha***) malloc (tam * sizeof(Pilha**));
+    tabuleiro = (Pilha***) malloc (tam_tabuleiro * sizeof(Pilha**));
     if(tabuleiro!=NULL){
-        for(int i = 0; i < tam; i++){
-            tabuleiro[i] = (Pilha**) malloc (tam * sizeof(Pilha*));
-            for(int j = 0; j < tam; j++){
+        for(int i = 0; i < tam_tabuleiro; i++){
+            tabuleiro[i] = (Pilha**) malloc (tam_tabuleiro * sizeof(Pilha*));
+            for(int j = 0; j < tam_tabuleiro; j++){
                 tabuleiro[i][j] = criar_pilha();
             }
         }
     }
     return tabuleiro;
+}
+
+void destruir_tabuleiro(Pilha ***tabuleiro, int tam_tabuleiro){
+    if(tabuleiro!=NULL){
+        for(int i = 0; i < tam_tabuleiro; i++){
+            for(int j = 0; j < tam_tabuleiro; j++){
+                destruir_pilha(tabuleiro[i][j]);
+            }
+            free(tabuleiro[i]);
+        }
+    }
 }
 
 void imprime_tabuleiro(Pilha ***tabuleiro, int tamanho_tab){
@@ -234,7 +246,7 @@ void adiciona_pecas_lista(Lista* lista_pecas, int qtd_parque, int qtd_teto, int 
     }
 }
 
-int valida_coordenada(Pilha ***tabuleiro, int tam, char coordenada[2], int v_peca){
+int valida_coordenada(Pilha ***tabuleiro, int tam, char coordenada[10], int v_peca){
     int cont1=0, cont2=0, letra=97, numero=49, let=0, num=0;
     for(int i=0; i<tam; i++){
         let++;
@@ -281,72 +293,213 @@ int conta_item_lista(Lista *lista, int pec){
     }
 }
 
-void imprime_visao(Pilha*** tabuleiro, int tamanho_tab, int num_jogador){
-    int tam_pilha, aux, tam;
+int conta_pontos(Pilha*** tabuleiro, int tamanho_tab, int num_jogador){
+    int tam_pilha, contador=0, pontos=0, maior=0;
     //Vista do SUL.
     if(num_jogador==1){
-        //Vai andar na ultima linha.
         for(int j=0; j < tamanho_tab; j++){
-            //Vai percorrer cada coluna do primeiro elemento ao último.
-            for(int i=0; i < tamanho_tab; i++){
+            for(int i=tamanho_tab-1; i > -1; i--){
                 tam_pilha = tamanho_pilha(tabuleiro[i][j]);
-                if(tam_pilha!=0){
-                    if(i!=tamanho_tab-1){
-                        aux = tamanho_pilha(tabuleiro[i+1][j]);
-
-                        if(tamanho_tab > aux){
-                            tam = tamanho_tab-aux;
-                            for(int z=0; z < tam; z++){
-                                for(int x=0; x < tamanho_tab-(z+1); x++){
-                                    printf(" ");
-                                }
-                                for(int x=0; x < i+1; x++){
-                                    printf("#");
-                                }
-                                for(int x=0; x < tamanho_tab-(z+1); x++){
-                                    printf(" ");
-                                }
-                                printf("\n");
-                            }
-                        }
-                    }
-
+                if(tam_pilha > maior){
+                    maior=tam_pilha;
+                    contador++;
                 }
             }
+            pontos += contador;
+            contador=0;
+            maior=0;
         }
+        return pontos;
     }
 
     //Vista do OESTE.
     else if(num_jogador==2){
-        //Vai andar na primeira coluna.
         for(int i=0; i < tamanho_tab; i++){
-            //Vai percorrer cada linha do ultimo elemento ao primeiro.
-            for(int j=tamanho_tab-1; j >=0; j--){
+            for(int j=0; j < tamanho_tab; j++){
                 tam_pilha = tamanho_pilha(tabuleiro[i][j]);
+                if(tam_pilha > maior){
+                    maior=tam_pilha;
+                    contador++;
+                }
             }
+            pontos += contador;
+            contador=0;
+            maior=0;
         }
+        return pontos;
     }
+
 
     //Vista do NORTE.
     else if(num_jogador==3){
-        //Vai andar na primeira linha.
         for(int j=0; j < tamanho_tab; j++){
-            //Vai percorrer cada coluna do ultimo elemento ao primeiro.
-            for(int i=tamanho_tab-1; i >=0; j--){
+            for(int i=0; i < tamanho_tab; i++){
                 tam_pilha = tamanho_pilha(tabuleiro[i][j]);
+                if(tam_pilha > maior){
+                    maior=tam_pilha;
+                    contador++;
+                }
             }
+            pontos += contador;
+            contador=0;
+            maior=0;
         }
+        return pontos;
     }
 
     //Vista do LESTE
     else{
-        //Vai andar na última coluna.
         for(int i=0; i < tamanho_tab; i++){
-            //Vai percorrer cada linha do primeiro elemento ao último
-            for(int j=0; j < tamanho_tab; j++){
+            for(int j=tamanho_tab-1; j >=0; j--){
                 tam_pilha = tamanho_pilha(tabuleiro[i][j]);
+                if(tam_pilha > maior){
+                    maior=tam_pilha;
+                    contador++;
+                }
             }
+            pontos += contador;
+            contador=0;
+            maior=0;
+        }
+        return pontos;
+    }
+}
+
+int maior_predio_tab(Pilha*** tabuleiro, int tamanho_tab){
+    int maior=0, tam_pilha;
+    for(int i=0; i < tamanho_tab; i++){
+        for(int j=0; j < tamanho_tab; j++){
+            tam_pilha = tamanho_pilha(tabuleiro[i][j]);
+            if(tam_pilha > maior) maior=tam_pilha;
+        }
+    }
+    return maior;
+}
+
+void limpaString(char* str, int LARGURAMAX){
+    for(int i = 0; i < LARGURAMAX; i++){
+        str[i] = ' ';
+    }
+}
+
+void adicionaProfundidade(char* str, int tamanho){
+    int meio = tamanho / 2;
+    for(int i = 0; i < tamanho - 1; i++){
+        if(str[i] == '#' && str[i+1] == ' '){
+            str[i+1] = '#';
+            return;
+        }
+        else if((str[i] == ' ' && str[i + 1] == '#' ) || (i == meio - 1)){
+            str[i] = '#';
         }
     }
 }
 
+void addLinha(char* matriz, char* str, int pos, int predio, int LARGURAMAX, int tamanho_tab){
+    for(int i = 0; i < LARGURAMAX; i++){
+        matriz[pos * (LARGURAMAX * tamanho_tab + 1) + i + (predio*tamanho_tab*2)] = str[i];
+    }
+}
+
+void imprime_vista(Pilha*** tabuleiro, int tamanho_tab, int jogador){
+    int ALTURAMAX = maior_predio_tab(tabuleiro, tamanho_tab), LARGURAMAX = tamanho_tab*2, tam_predio, matriz_inverte[tamanho_tab][tamanho_tab];
+
+    char str[LARGURAMAX];
+
+    for(int i=0; i < LARGURAMAX; i++){
+        if(i == LARGURAMAX-1){
+            str[i] = '\n';
+        }
+        else{
+            str[i] = ' ';
+        }
+    }
+
+    char matrizStr[ALTURAMAX][(LARGURAMAX * tamanho_tab )+ 1];
+
+    for(int i = 0; i < ALTURAMAX; i++){
+        for(int j = 0; j < LARGURAMAX * tamanho_tab + 1; j++){
+            if(j == LARGURAMAX * tamanho_tab){
+                matrizStr[i][j] = '\n';
+            }
+            else{
+                matrizStr[i][j] = ' ';
+            }
+        }
+    }
+
+    //VISTA SUL
+    if(jogador==1){
+        for(int i = 0; i < tamanho_tab; i++){
+            limpaString(str, LARGURAMAX);
+            for(int j = 0; j < tamanho_tab; j++){
+                adicionaProfundidade(str, LARGURAMAX);
+                for(int k = ALTURAMAX-1; k > -1; k--){
+                    tam_predio = tamanho_pilha(tabuleiro[j][i]);
+                    if(k >= ALTURAMAX - tam_predio){
+                        addLinha(matrizStr, str, k, i, LARGURAMAX, tamanho_tab);
+                    }
+                }
+            }
+        }
+        printf("%s",matrizStr);
+    }
+    //VISTA OESTE
+    else if(jogador==2){
+        for(int i = 0; i < tamanho_tab; i++){
+            limpaString(str, LARGURAMAX);
+            for(int j = tamanho_tab-1; j > -1; j--){
+                adicionaProfundidade(str, LARGURAMAX);
+                for(int k = ALTURAMAX-1; k > -1; k--){
+                    tam_predio = tamanho_pilha(tabuleiro[i][j]);
+                    if(k >= ALTURAMAX - tam_predio){
+                        addLinha(matrizStr, str, k, i, LARGURAMAX, tamanho_tab);
+                    }
+                }
+            }
+        }
+        printf("%s",matrizStr);
+    }
+    //VISTA NORTE
+    else if(jogador==3){
+        for(int i=0, linha = tamanho_tab-1; i < tamanho_tab, linha > -1; i++, linha--){
+            for(int j=0, coluna = tamanho_tab-1; j < tamanho_tab, coluna > -1; j++, coluna--){
+                matriz_inverte[j][i] = tamanho_pilha(tabuleiro[coluna][linha]);
+            }
+        }
+        for(int i = 0; i < tamanho_tab; i++){
+            limpaString(str, LARGURAMAX);
+            for(int j = 0; j < tamanho_tab; j++){
+                adicionaProfundidade(str, LARGURAMAX);
+                for(int k = ALTURAMAX-1; k > -1; k--){
+                    tam_predio = matriz_inverte[j][i];
+                    if(k >= ALTURAMAX - tam_predio){
+                        addLinha(matrizStr, str, k, i, LARGURAMAX, tamanho_tab);
+                    }
+                }
+            }
+        }
+        printf("%s",matrizStr);
+    }
+    //VISTA LESTE
+    else{
+        for(int i=0, linha = tamanho_tab-1; i < tamanho_tab, linha > -1; i++, linha--){
+            for(int j=0, coluna = 0; j < tamanho_tab, coluna < tamanho_tab; j++, coluna++){
+                matriz_inverte[j][i] = tamanho_pilha(tabuleiro[linha][coluna]);
+            }
+        }
+        for(int i = 0; i < tamanho_tab; i++){
+            limpaString(str, LARGURAMAX);
+            for(int j = 0; j < tamanho_tab; j++){
+                adicionaProfundidade(str, LARGURAMAX);
+                for(int k = ALTURAMAX-1; k > -1; k--){
+                    tam_predio =  matriz_inverte[j][i];
+                    if(k >= ALTURAMAX - tam_predio){
+                        addLinha(matrizStr, str, k, i, LARGURAMAX, tamanho_tab);
+                    }
+                }
+            }
+        }
+        printf("%s",matrizStr);
+    }
+}

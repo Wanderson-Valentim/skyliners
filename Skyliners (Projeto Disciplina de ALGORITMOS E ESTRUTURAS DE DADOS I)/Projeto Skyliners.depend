@@ -37,28 +37,14 @@
 
 1605221033 c:\users\wande\desktop\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\funcoes.h
 
-1605540655 source:d:\todos os arquivos\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\funcoes.c
-	<stdio.h>
-	<stdlib.h>
-	<Windows.h>
-	<locale.h>
-	<time.h>
-	"Pilha.h"
-	"Lista.h"
-	"funcoes.h"
-
-1605223641 d:\todos os arquivos\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\pilha.h
-
-1605145805 d:\todos os arquivos\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\lista.h
-
-1605221033 d:\todos os arquivos\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\funcoes.h
-
-1605223641 source:d:\todos os arquivos\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\lista.c
+1605205640 source:c:\users\walisson\desktop\projeto skyliners\lista.c
 	<stdio.h>
 	<stdlib.h>
 	"Lista.h"
 
-1605227990 source:d:\todos os arquivos\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\main.c
+1605127804 c:\users\walisson\desktop\projeto skyliners\lista.h
+
+1605564829 source:c:\users\walisson\desktop\projeto skyliners\main.c
 	<stdio.h>
 	<stdlib.h>
 	<Windows.h>
@@ -68,8 +54,59 @@
 	"Lista.h"
 	"funcoes.h"
 
-1604854940 source:d:\todos os arquivos\estudos\3∫ semestre\an¡lise de algoritmo e estrutura de dados 1\projeto final (skyliners)\projeto skyliners\pilha.c
+1605205640 c:\users\walisson\desktop\projeto skyliners\pilha.h
+
+1605564829 c:\users\walisson\desktop\projeto skyliners\funcoes.h
+
+1604836940 source:c:\users\walisson\desktop\projeto skyliners\pilha.c
 	<stdio.h>
 	<stdlib.h>
 	"Pilha.h"
+
+1605565077 source:c:\users\walisson\desktop\projeto skyliners\funcoes.c
+	<stdio.h>
+	<stdlib.h>
+	<Windows.h>
+	<locale.h>
+	<time.h>
+	"Pilha.h"
+	"Lista.h"
+	"funcoes.h"
+
+1605187640 source:c:\users\wanderson\desktop\projeto skyliners\lista.c
+	<stdio.h>
+	<stdlib.h>
+	"Lista.h"
+
+1605109804 c:\users\wanderson\desktop\projeto skyliners\lista.h
+
+1606056703 source:c:\users\wanderson\desktop\projeto skyliners\main.c
+	<stdio.h>
+	<stdlib.h>
+	<Windows.h>
+	<time.h>
+	<locale.h>
+	"Pilha.h"
+	"Lista.h"
+	"funcoes.h"
+
+1605187640 c:\users\wanderson\desktop\projeto skyliners\pilha.h
+
+1606005749 c:\users\wanderson\desktop\projeto skyliners\funcoes.h
+
+1604818940 source:c:\users\wanderson\desktop\projeto skyliners\pilha.c
+	<stdio.h>
+	<stdlib.h>
+	"Pilha.h"
+
+1606056747 source:c:\users\wanderson\desktop\projeto skyliners\funcoes.c
+	<stdio.h>
+	<stdlib.h>
+	<Windows.h>
+	<string.h>
+	<locale.h>
+	<time.h>
+	"Pilha.h"
+	"Lista.h"
+	"funcoes.h"
 
